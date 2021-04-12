@@ -1,0 +1,45 @@
+﻿@model IEnumerable<quickproj.Models.Kategory>
+
+@{
+    ViewBag.Title = "Index";
+}   
+    <br />
+    <hr />
+ 
+
+<p>
+    @Html.ActionLink("Yeni Oluştur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoryName)
+        </th>
+        <th></th>
+    </tr>
+    @using (Html.BeginForm())
+    { 
+    <div class="aramadiv">   
+        @Html.TextBox("search")
+        <input class="btn-danger" type="submit" name="btn" value="Ara" />
+    
+    </div>
+   }
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoryName)
+        </td>
+        <td>
+           
+            
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Detay", "Details", new { id = item.id }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>
